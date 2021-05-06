@@ -13,9 +13,57 @@
 			padding: 0;
 		}
 	</style>
+	<script type="text/javascript"> 
+
+	</script>
 </head>
 <body>
-	<img src="./static/1.png" />
+	<ul>        
+    <li data-src="./static/1.png"><i></i></li>
+    <li data-src="./static/2.png"><i></i></li>
+    <li data-src="./static/3.png"><i></i></li>
+    <li data-src="./static/4.png"><i></i></li>
+    <li data-src="./static/5.png"><i></i></li>
+    <li data-src="./static/6.png"><i></i></li>
+    <li data-src="./static/7.png"><i></i></li>
+    <li data-src="./static/8.png"><i></i></li>
+    <li data-src="./static/9.png"><i></i></li>
+    <li data-src="./static/10.png"><i></i></li>
+    <li data-src="./static/11.png"><i></i></li>
+    <li data-src="./static/12.png"><i></i></li>
+    <li data-src="./static/13.png"><i></i></li>
+    <li data-src="./static/14.png"><i></i></li>
+    <li data-src="./static/15.png"><i></i></li>
+    <li data-src="./static/16.png"><i></i></li>
+    <li data-src="./static/17.png"><i></i></li>
+    <li data-src="./static/18.png"><i></i></li>
+    <li data-src="./static/19.png"><i></i></li>
+    <li data-src="./static/20.png"><i></i></li>
+    <li data-src="./static/21.png"><i></i></li>
+    <li data-src="./static/22.png"><i></i></li>
+    <li data-src="./static/23.png"><i></i></li>
+    <li data-src="./static/24.png"><i></i></li>
+    <li data-src="./static/25.png"><i></i></li>
+    <li data-src="./static/26.png"><i></i></li>
+    <li data-src="./static/27.png"><i></i></li>
+    <li data-src="./static/28.png"><i></i></li>
+    <li data-src="./static/29.png"><i></i></li>
+    <li data-src="./static/30.png"><i></i></li>
+    <li data-src="./static/31.png"><i></i></li>
+    <li data-src="./static/32.png"><i></i></li>
+    <li data-src="./static/33.png"><i></i></li>
+    <li data-src="./static/34.png"><i></i></li>
+    <li data-src="./static/35.png"><i></i></li>
+    <li data-src="./static/36.png"><i></i></li>
+    <li data-src="./static/37.png"><i></i></li>
+    <li data-src="./static/38.png"><i></i></li>
+    <li data-src="./static/39.png"><i></i></li>
+    <li data-src="./static/40.png"><i></i></li>
+    <li data-src="./static/41.png"><i></i></li>
+    <li data-src="./static/42.png"><i></i></li>
+    <li data-src="./static/43.png"><i></i></li>
+</ul>
+	<!-- <img src="./static/1.png" />
 	<img src="./static/2.png" />
 	<img src="./static/3.png" />
 	<img src="./static/4.png" />
@@ -57,6 +105,45 @@
 	<img src="./static/40.png" />
 	<img src="./static/41.png" />
 	<img src="./static/42.png" />
-	<img src="./static/43.png" />  
-</body>
+	<img src="./static/43.png" />    -->
+</body> 
+<script type="text/javascript"> 
+	/* 获取节点 */   
+	var oUl = document.getElementsByTagName('ul')[0];
+	var aLi = oUl.getElementsByTagName('li');
+	/* 创建img标签函数 */   
+	function createImg(obj){   
+	    var src = '';    
+	    if(obj.dataset.src){
+	        src = obj.dataset.src;
+	    }else{
+	        src = obj.getAttribute('data-src');
+	    }    
+	    if(obj.children.length <= 1){        
+	        var img = document.createElement('img');
+	        img.src = src;
+	        obj.appendChild(img);
+	    }
+	}
+	function getTop(obj){    
+	  var h = 0;    
+	  while(obj){
+	      h += obj.offsetTop;
+	      obj = obj.offsetParent;
+	  }    
+	  return h;
+	}
+	window.onscroll = function(){    
+	    var t = document.documentElement.clientHeight + (document.body.scrollTop || document.documentElement.scrollTop);    
+	    for(var i=0;i<aLi.length;i++){        
+	        if(getTop(aLi[i]) < t){  
+	            setTimeout('createImg(aLi['+i+'])',500)
+	        }
+	    } 
+	}
+	/* 页面加载完便执行一次滚动函数 */
+	window.onload = function(){    
+	    window.onscroll();
+	}
+</script>
 </html>
